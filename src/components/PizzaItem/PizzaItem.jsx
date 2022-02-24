@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
+import PizzaCard from '../PizzaCard/PizzaCard';
 
 function PizzaItem() {
 	const allPizzasReducer = useSelector((store) => store.allPizzasReducer);
@@ -9,7 +10,7 @@ function PizzaItem() {
 	const dispatch = useDispatch();
 
 	// local state
-	let [pizzaState, setPizzaState] = useState([]);
+	const [pizzaState, setPizzaState] = useState([]);
 
 	useEffect(() => {
 		console.log('in Effect');
@@ -24,7 +25,7 @@ function PizzaItem() {
 			url: '/api/pizza',
 		})
 			.then((response) => {
-				console.log(response.data);
+				// console.log(response.data);
 
 				dispatch({
 					type: 'GET_PIZZAS',
@@ -36,54 +37,32 @@ function PizzaItem() {
 			});
 	} // end of getPizza
 
-	// // this function will send payload id for post Reducer
-	function postPizza(id) {
-		console.log('Pizza...Delivering...');
-
+	const setPizzas = () => {
 		dispatch({
 			type: 'SET_PIZZAS',
-			payload: id,
+			payload: {
+				pizzas: pizzaState,
+				total: 0,
+			},
 		});
-		console.log(id);
-	} // end of postPizza
+	};
 
-	// this function will send payload id for delete Reducer
-	function deletePizza(id) {
-		console.log('Pizza...Delivering...');
-
-		dispatch({
-			type: 'DELETE_PIZZAS',
-			payload: [id],
-		});
-		console.log(id);
-	} // end of deletePizza
-
-	console.log(allPizzasReducer);
+	console.log({ allPizzasReducer });
+	console.log({ pizzaState });
 	return (
 		<>
 			{allPizzasReducer.map((pizza, i) => {
 				return (
-					<li key={i}>
-						{pizza.name} {pizza.description} {pizza.price} {pizza.image_path}
-						<button
-							onClick={() => {
-								postPizza(pizza.id);
-							}}
-						>
-							Add
-						</button>
-						<button
-							onClick={() => {
-								postPizza(pizza.id);
-							}}
-						>
-							Remove
-						</button>
-					</li>
+					<PizzaCard
+						key={i}
+						pizza={pizza}
+						setPizzaState={setPizzaState}
+						pizzaState={pizzaState}
+					/>
 				);
 			})}
 
-			<button link to='/CustomerForm'>
+			<button link to='/CustomerForm' onClick={setPizzas}>
 				Next
 			</button>
 		</>
