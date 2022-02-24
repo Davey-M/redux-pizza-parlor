@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { HashRouter as Router, Link } from 'react-router-dom';
 
 import PizzaCard from '../PizzaCard/PizzaCard';
 
@@ -11,6 +12,7 @@ function PizzaItem() {
 
 	// local state
 	const [pizzaState, setPizzaState] = useState([]);
+	const [pizzaPrice, setPizzaPrice] = useState(0);
 
 	useEffect(() => {
 		console.log('in Effect');
@@ -42,7 +44,7 @@ function PizzaItem() {
 			type: 'SET_PIZZAS',
 			payload: {
 				pizzas: pizzaState,
-				total: 0,
+				total: pizzaPrice,
 			},
 		});
 	};
@@ -50,7 +52,7 @@ function PizzaItem() {
 	console.log({ allPizzasReducer });
 	console.log({ pizzaState });
 	return (
-		<>
+		<Router>
 			{allPizzasReducer.map((pizza, i) => {
 				return (
 					<PizzaCard
@@ -58,14 +60,16 @@ function PizzaItem() {
 						pizza={pizza}
 						setPizzaState={setPizzaState}
 						pizzaState={pizzaState}
+						setPizzaPrice={setPizzaPrice}
+						pizzaPrice={pizzaPrice}
 					/>
 				);
 			})}
 
-			<button link to='/CustomerForm' onClick={setPizzas}>
-				Next
-			</button>
-		</>
+			<Link to='/CustomerForm'>
+				<button onClick={setPizzas}>Next</button>
+			</Link>
+		</Router>
 	);
 } // end of PizzaItem
 
