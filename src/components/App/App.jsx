@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 
+
 function App() {
 	function getPizza() {
 		console.log('Loading Pizzas...');
