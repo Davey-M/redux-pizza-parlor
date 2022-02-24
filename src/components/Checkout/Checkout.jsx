@@ -18,6 +18,12 @@ function Checkout() {
     }
 
 
+    // ===== HELPER FUNCTIONS ============================ //
+    const pizzaPriceTotal = (cost, qty) => {
+        return cost * qty
+    }
+
+
     // ===== RETURN ======================================= //
     return (
         <>
@@ -42,7 +48,7 @@ function Checkout() {
                     {currentOrder.pizzas.map((pizza, i) => {
                         <tr key={i}>
                             <td>{pizza.name}</td> 
-                            <td>{pizza.cost}</td> 
+                            <td>{pizzaPriceTotal(pizza.price * pizza.quantity)}</td> 
                         </tr>
                     })}
                 </tbody>
