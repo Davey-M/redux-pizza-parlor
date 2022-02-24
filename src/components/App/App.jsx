@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 
+import AdminView from '../AdminView/AdminView';
 
 function App() {
 	function getPizza() {
@@ -29,8 +30,10 @@ function App() {
 				<h1 className='App-title'>Prime Pizza</h1>
 			</header>
 
-			<img src='images/pizza_photo.png' />
-			<p>Pizza is great.</p>
+			<AdminView />
+
+			{/* <img src='images/pizza_photo.png' /> */}
+			{/* <p>Pizza is great.</p> */}
 		</div>
 	);
 }
