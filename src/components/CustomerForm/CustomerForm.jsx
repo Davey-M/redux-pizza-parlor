@@ -12,8 +12,8 @@ function CustomerForm() {
 
     const handleRadio = (event) => {
         setType(event.target.value)
-        console.log('Here is the ', event.target.value);
-      }
+        console.log('Here is the', event.target.value);
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -24,6 +24,7 @@ function CustomerForm() {
         //       setCity('');
         //       setZip('');
         //       setCity('');
+        //       setType('');
         //     }).catch(erro =>{
         //       console.log('Error in POST order');
         //       alert(`Dude you did it wrong 🦷`)
@@ -31,7 +32,7 @@ function CustomerForm() {
     }
     dispatch({
         type: 'SET_CUSTOMER_DATA',
-        payload: { name, address, city, zip, type }
+        payload: { customer_name, street_address, city, zip, type }
     })
 
 
@@ -68,22 +69,26 @@ function CustomerForm() {
                     <label>
                         <input type="radio"
                             value="Pickup"
-                            onChange={handleRadio} 
-                        checked={type === 'Pickup'}/>
+                            onChange={handleRadio}
+                            checked={type === 'Pickup'} />
                         Pickup
-                        
+
                     </label>
                     <label>
                         <input type="radio"
                             value="Delivery"
-                            onChange={handleRadio} 
-                        checked={type === 'Delivery'}/>
+                            onChange={handleRadio}
+                            checked={type === 'Delivery'} />
                         Delivery
                     </label>
+                    {/* <Route path="/checkout" exact> */}
 
                     <button type="submit">
                         Submit Info
                     </button>
+                    
+                  <Link to ="/CustomerCheckout"><button> Next</button></Link> 
+                    
                 </form>
             </section>
         </>
