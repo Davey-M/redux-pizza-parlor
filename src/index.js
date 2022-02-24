@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
 
-import { Reducer, createStore } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';
 
@@ -45,4 +45,16 @@ const currentOrder = (state = {
     return state;
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const storeData = createStore(
+    combineReducers({
+        currentOrder,
+    }),
+    applyMiddleware(logger)
+)
+
+ReactDOM.render(
+    <Provider store={storeData}>
+        <App />
+    </Provider>
+    ,
+    document.getElementById('root'));
