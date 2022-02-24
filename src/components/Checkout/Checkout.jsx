@@ -1,23 +1,35 @@
+import axios from 'axios';
 import { useSelector } from 'react-redux'
+import './Checkout.css';
 
 function Checkout() {
 
-    const orderReducer = useSelector(store => store.orderReducer);
-    const lineItemReducer = useSelector(store => store.lineItemReducer);
+    const currentOrder = useSelector(store => store.currentOrder);
 
-    // axios.post
+    // ===== POST ======================================== //
+    const handleCheckoutClick = () => {
+        console.log('in handleCheckoutClick');
+        axios.post('api/order', currentOrder)
+        .then((response) => {
+            console.log('in handleCheckoutClick.then', currentOrder);
+        }).catch((err) => {
+            console.log('in handleCheckoutClick.catch', err);
+        })
+    }
 
+
+    // ===== RETURN ======================================= //
     return (
         <>
             <h3>Step 3: Checkout</h3>
 
             <ul>
-                <li>{orderReducer.name}</li>
-                <li>{orderReducer.address}</li>
-                <li>{orderReducer.city}, {orderReducer.zip}</li>
+                <li>{currentOrder.customer_name}</li>
+                <li>{currentOrder.customer_address}</li>
+                <li>{currentOrder.city}, {currentOrder.zip}</li>
             </ul>
 
-            <div>For {orderReducer.type}</div>
+            <div>For: {currentOrder.type}</div>
 
             <table>
                 <thead>
@@ -27,17 +39,19 @@ function Checkout() {
                     </tr>
                 </thead>
                 <tbody>
-                    {lineItemReducer.map((order, i) => {
+                    {currentOrder.pizzas.map((pizza, i) => {
                         <tr key={i}>
-                            {/* NOT RIGHT */}
-                            <td>lineItemReducer.name</td> 
-                            <td>lineItemReducer.cost</td> 
-                            {/* --------- */}
+                            <td>{pizza.name}</td> 
+                            <td>{pizza.cost}</td> 
                         </tr>
-                        // <ProductListItem key={i} product={product} />;
                     })}
                 </tbody>
             </table>
+
+            <h3>Total: {currentOrder.total}</h3>
+            
+            {/* Handle Checkout & Link to back to Select Pizzas */}
+            <button onClick={handleCheckoutClick}>Checkout</button>
         </>
     )
 }
