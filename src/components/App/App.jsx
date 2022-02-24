@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import './App.css';
 
-import AdminView from '../AdminView/AdminView';
+import CustomerForm from '../CustomerForm/CustomerForm';
 
 function App() {
 	function getPizza() {
@@ -30,7 +30,7 @@ function App() {
 				<h1 className='App-title'>Prime Pizza</h1>
 			</header>
 
-			<AdminView />
+			<CustomerForm />
 
 			{/* <img src='images/pizza_photo.png' /> */}
 			{/* <p>Pizza is great.</p> */}
