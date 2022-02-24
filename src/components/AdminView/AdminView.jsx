@@ -34,31 +34,39 @@ function AdminView() {
 	return (
 		<div className='adminView'>
 			<h1>Pizza Orders</h1>
-			<TableContainer component={Paper}>
-				<Table>
-					<TableHead>
-						<TableRow>
-							<TableCell>Name</TableCell>
-							<TableCell>Time</TableCell>
-							<TableCell>Type</TableCell>
-							<TableCell>Cost</TableCell>
-						</TableRow>
-					</TableHead>
-					<TableBody>
-						{orders.map((order) => {
-							const { customer_name, time, type, total, id } = order;
-							return (
-								<TableRow key={id}>
-									<TableCell>{customer_name}</TableCell>
-									<TableCell>{time}</TableCell>
-									<TableCell>{type}</TableCell>
-									<TableCell>{total}</TableCell>
-								</TableRow>
-							);
-						})}
-					</TableBody>
-				</Table>
-			</TableContainer>
+			<div
+				className='tableContainer'
+				style={{
+					maxWidth: '90%',
+					margin: 'auto',
+				}}
+			>
+				<TableContainer component={Paper}>
+					<Table>
+						<TableHead>
+							<TableRow>
+								<TableCell>Name</TableCell>
+								<TableCell>Time</TableCell>
+								<TableCell>Type</TableCell>
+								<TableCell>Cost</TableCell>
+							</TableRow>
+						</TableHead>
+						<TableBody>
+							{orders.map((order) => {
+								const { customer_name, time, type, total, id } = order;
+								return (
+									<TableRow key={id}>
+										<TableCell>{customer_name}</TableCell>
+										<TableCell>{time}</TableCell>
+										<TableCell>{type}</TableCell>
+										<TableCell>{total}</TableCell>
+									</TableRow>
+								);
+							})}
+						</TableBody>
+					</Table>
+				</TableContainer>
+			</div>
 		</div>
 	);
 }
