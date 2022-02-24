@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './components/App/App';
+import logger from 'redux-logger';
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -45,9 +46,18 @@ const currentOrder = (state = {
     return state;
 }
 
+// Pizza reducer for GET from App.jsx
+const allPizzasReducer = (state = [], action) => {
+    if (action.type === 'GET_PIZZAS') {
+        return action.payload // returns only what is currently updated
+    }
+    return state
+}; // end of allPizzasReducer
+
 const storeData = createStore(
     combineReducers({
         currentOrder,
+        allPizzasReducer
     }),
     applyMiddleware(logger)
 )
@@ -57,4 +67,5 @@ ReactDOM.render(
         <App />
     </Provider>
     ,
-    document.getElementById('root'));
+    document.getElementById('root')
+);
