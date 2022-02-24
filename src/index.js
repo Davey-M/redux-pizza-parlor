@@ -38,7 +38,7 @@ const currentOrder = (state = {
         return {
             ...currentOrder,
             pizzas: pizzas,
-            total: total,
+            total: Number(total),
         }
     }
 
