@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Checkout from '../Checkout/Checkout';
 
+
 function App() {
 	function getPizza() {
 		console.log('Loading Pizzas...');
