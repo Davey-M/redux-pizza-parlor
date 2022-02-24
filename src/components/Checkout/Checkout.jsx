@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useSelector } from 'react-redux'
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './Checkout.css';
 
 function Checkout() {
@@ -12,11 +13,11 @@ function Checkout() {
         axios.post('api/order', currentOrder)
         .then((response) => {
             console.log('in handleCheckoutClick.then', currentOrder);
+            // How do I LINK to home page?
         }).catch((err) => {
             console.log('in handleCheckoutClick.catch', err);
         })
     }
-
 
     // ===== HELPER FUNCTIONS ============================ //
     const pizzaPriceTotal = (cost, qty) => {
@@ -41,13 +42,16 @@ function Checkout() {
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Qty</th>
                         <th>Cost</th>
                     </tr>
                 </thead>
                 <tbody>
                     {currentOrder.pizzas.map((pizza, i) => {
-                        <tr key={i}>
-                            <td>{pizza.name}</td> 
+                        return <tr key={i}>
+                            {/* CIRCLE BACK WITH VINCE */}
+                            <td>{/*pizza.quantity*/}</td> 
+                            <td>{/*pizza.cost*/}</td>
                             <td>{pizzaPriceTotal(pizza.price * pizza.quantity)}</td> 
                         </tr>
                     })}
