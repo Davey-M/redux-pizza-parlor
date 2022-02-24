@@ -34,9 +34,13 @@ function AdminView() {
 				</thead>
 				<tbody>
 					{orders.map((order) => {
+						const { customer_name, time, type, total, id } = order;
 						return (
-							<tr>
-								<td></td>
+							<tr key={id}>
+								<td>{customer_name}</td>
+								<td>{time}</td>
+								<td>{type}</td>
+								<td>{total}</td>
 							</tr>
 						);
 					})}
