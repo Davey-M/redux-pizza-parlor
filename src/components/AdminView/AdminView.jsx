@@ -1,17 +1,23 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function AdminView() {
 	const [orders, setOrders] = useState([]);
 
-	axios
-		.get('/orders')
-		.then((response) => {
-			setOrders(response.data);
-		})
-		.catch((err) => {
-			console.error('Error getting orders', err);
-		});
+	const getOrders = () => {
+		axios
+			.get('/api/order')
+			.then((response) => {
+				setOrders(response.data);
+			})
+			.catch((err) => {
+				console.error('Error getting orders', err);
+			});
+	};
+
+	useEffect(() => {
+		getOrders();
+	}, []);
 
 	console.log(orders);
 	return (
@@ -26,7 +32,15 @@ function AdminView() {
 						<th>Cost</th>
 					</tr>
 				</thead>
-				<tbody></tbody>
+				<tbody>
+					{orders.map((order) => {
+						return (
+							<tr>
+								<td></td>
+							</tr>
+						);
+					})}
+				</tbody>
 			</table>
 		</div>
 	);
