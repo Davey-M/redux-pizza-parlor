@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios'
 import { useDispatch } from 'react-redux'
+import {Link, Router} from 'react-router-dom'
 
 function CustomerForm() {
     const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function CustomerForm() {
 
     return (
         <>
+        <Router>
             <section>
                 <h2>Add Info</h2>
                 <form onSubmit={handleSubmit} className="add-info-form">
@@ -91,6 +93,7 @@ function CustomerForm() {
                     
                 </form>
             </section>
+            </Router>
         </>
     )
 };
