@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import PizzaItem from '../PizzaItem/PizzaItem';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
+// import CustomerForm from '../CustomerForm/CustomerForm';
 
 function App() {
 	return (
@@ -8,10 +9,8 @@ function App() {
 			<header className='App-header'>
 				<h1 className='App-title'>Prime Pizza</h1>
 			</header>
-
 			<img src='images/pizza_photo.png' />
 			<p>Pizza is great.</p>
-			<PizzaItem />
 		</div>
 	);
 }
