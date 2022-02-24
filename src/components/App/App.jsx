@@ -4,6 +4,26 @@ import './App.css';
 
 function App() {
 
+  function getPizza() {
+    console.log('Loading Pizzas...');
+    axios({
+      method: 'GET',
+      url: '/api/pizza'
+    }).then( response => {
+      console.log(response.data)
+
+      dispatchEvent({
+        type: 'GET_PIZZAS',
+        payload: response.data
+      })
+    }).catch(error => {
+      console.log('error in GET', error)
+    })
+
+  }; // end of getPizza
+
+  
+
   return (
     <div className='App'>
       <header className='App-header'>
@@ -18,3 +38,8 @@ function App() {
 }
 
 export default App;
+
+
+// axios get
+// dispatch
+// index will have a reduce and set it in store.
