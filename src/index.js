@@ -13,7 +13,7 @@ const currentOrder = (state = {
     city: '',
     zip: '',
     type: '',
-    total: '',
+    total: 0,
     pizzas: [],
 }, action) => {
 
@@ -24,7 +24,21 @@ const currentOrder = (state = {
         return {
             ...currentOrder,
             customer_name: customer_name,
-            street_address: street_address
+            street_address: street_address,
+            city: city,
+            zip: zip,
+            type: type,
+        }
+    }
+
+    if (action.type === 'SET_PIZZAS') {
+
+        const { total, pizzas } = action.payload;
+
+        return {
+            ...currentOrder,
+            pizzas: pizzas,
+            total: total,
         }
     }
 
