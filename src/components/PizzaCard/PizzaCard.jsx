@@ -1,4 +1,12 @@
-import { useEffect, useState } from 'react';
+
+import { useState } from 'react';
+import "./PizzaCard.css";
+
+import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete'
+import SaveIcon from '@material-ui/icons/Save'
+import Pizza from './pizza_photo.png'
+>>>>>>> master
 
 function PizzaCard({
 	pizza,
@@ -29,12 +37,40 @@ function PizzaCard({
 	};
 
 	return (
-		<li>
-			{pizza.name} {pizza.description} {pizza.price} {pizza.image_path}
-			{!order && <button onClick={addPizza}>Add</button>}
-			{order && <button onClick={removePizza}>Remove</button>}
-		</li>
+		<>
+		
+
+			<li>
+			   <img class="picture" src={Pizza}/>
+			   <br></br>
+				<span id="name">{pizza.name} </span><br></br><br></br><span id="description">{pizza.description}</span> <br></br><br></br><span id="price">${pizza.price} </span>
+				<br></br><br></br>
+				{!order && <Button
+                onClick={addPizza}
+                variant="contained"
+                color="primary"
+                size="large"
+                startIcon={<SaveIcon />}
+                >
+                ADD
+            </Button>}
+				{order && <Button
+                onClick={removePizza}
+                variant="contained"
+                color="secondary"
+                size="large"
+                 startIcon={<DeleteIcon />}
+                >
+                DISCARD
+            </Button>}
+			</li>
+
+
+		</>
 	);
 }
 
 export default PizzaCard;
+
+
+// line 37 {pizza.image_path}
