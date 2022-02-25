@@ -57,7 +57,6 @@ function CustomerForm() {
 							className='add-info-form'
 							style={{
 								backgroundColor: 'white',
-								width: '60%',
 								padding: '1rem',
 								borderRadius: '4px',
 								margin: 'auto',
