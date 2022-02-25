@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { Link, HashRouter as Router } from 'react-router-dom';
 
+import { Button, TextField } from '@mui/material';
+
 function CustomerForm() {
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
@@ -42,37 +44,73 @@ function CustomerForm() {
 		});
 	};
 
+	const handleButtonClick = () => {
+		dispatch({
+			type: 'SET_CUSTOMER_DATA',
+			payload: {
+				customer_name: name,
+				street_address: address,
+				city,
+				zip,
+				type,
+			},
+		});
+	};
+
 	return (
 		<>
 			<Router>
 				<section>
 					<h2>Add Info</h2>
 					<form onSubmit={handleSubmit} className='add-info-form'>
-						<input
+						<TextField
+							style={{
+								minWidth: '40%',
+							}}
 							required
-							placeholder='Name'
+							label='Name'
 							value={name}
 							onChange={(event) => setName(event.target.value)}
 						/>
 
-						<input
+						<div className='break'></div>
+
+						<TextField
+							style={{
+								minWidth: '40%',
+							}}
 							required
-							placeholder='Address'
+							label='Address'
 							value={address}
 							onChange={(event) => setAddress(event.target.value)}
 						/>
-						<input
+
+						<div className='break'></div>
+
+						<TextField
+							style={{
+								minWidth: 'calc(20% - .5rem)',
+							}}
 							required
-							placeholder='City'
+							label='City'
 							value={city}
 							onChange={(event) => setCity(event.target.value)}
 						/>
-						<input
+
+						<div className='widthBreak'></div>
+
+						<TextField
+							style={{
+								minWidth: 'calc(20% - .5rem)',
+							}}
 							required
-							placeholder='Zip'
+							label='Zip'
 							value={zip}
 							onChange={(event) => setZip(event.target.value)}
 						/>
+
+						<div className='break'></div>
+
 						<label>
 							<input
 								type='radio'
@@ -93,10 +131,14 @@ function CustomerForm() {
 						</label>
 						{/* <Route path="/checkout" exact> */}
 
-						<button type='submit'>Submit Info</button>
+						{/* <button type='submit'>Submit Info</button> */}
+
+						<div className='break'></div>
 
 						<Link to='/CustomerCheckout'>
-							<button> Next</button>
+							<Button variant='contained' type='submit'>
+								Next
+							</Button>
 						</Link>
 					</form>
 				</section>

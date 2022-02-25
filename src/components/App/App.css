@@ -1,15 +1,24 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-header {
-  background-color: #222;
-  height: 70px;
-  padding: 20px;
-  color: white;
-  margin-bottom: 20px;
+	background-color: #222;
+	height: 70px;
+	padding: 20px;
+	color: white;
+	margin-bottom: 20px;
 }
 
 .App-title {
-  font-size: 2em;
+	font-size: 2em;
+}
+
+.break {
+	height: 1rem;
+}
+
+.widthBreak {
+	width: 1rem;
+	display: inline-block;
 }
