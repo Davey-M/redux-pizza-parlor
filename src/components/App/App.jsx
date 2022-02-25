@@ -1,19 +1,12 @@
 import React from 'react';
 import './App.css';
-import {
-	HashRouter as Router,
-	Route,
-	Link,
-	useHistory,
-} from 'react-router-dom';
-import { BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
+import { HashRouter as Router, Route } from 'react-router-dom';
 // import CustomerForm from '../CustomerForm/CustomerForm';
 
 import PizzaItem from '../PizzaItem/PizzaItem';
 import CustomerForm from '../CustomerForm/CustomerForm';
 import AdminView from '../AdminView/AdminView';
 import Checkout from '../Checkout/Checkout';
-import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
 	return (
@@ -22,7 +15,7 @@ function App() {
 				className='App'
 				style={{
 					display: 'grid',
-					gridTemplateRows: 'max-content 1fr max-content',
+					gridTemplateRows: 'max-content 1fr',
 					height: '100vh',
 				}}
 			>
@@ -45,7 +38,6 @@ function App() {
 						<AdminView />
 					</Route>
 				</main>
-				<Footer />
 			</div>
 		</Router>
 	);
@@ -56,57 +48,3 @@ export default App;
 // axios get
 // dispatch
 // index will have a reduce and set it in store.
-
-function Footer() {
-	const history = useHistory();
-	const dispatch = useDispatch();
-	// const [selectedLabel, setLabel] = useState(0);
-
-	const selectedLabel = useSelector((store) => store.linkState);
-
-	return (
-		<footer
-			style={{
-				width: '80%',
-				margin: '1rem auto',
-			}}
-		>
-			<Paper>
-				<BottomNavigation
-					showLabels
-					value={selectedLabel}
-					onChange={(event, newValue) => {
-						// setLabel(newValue);
-
-						dispatch({
-							type: 'SET_LINK',
-							payload: newValue,
-						});
-
-						let route;
-						switch (newValue) {
-							case 0:
-								route = '/';
-								break;
-							case 1:
-								route = '/CustomerForm';
-								break;
-							case 2:
-								route = '/CustomerCheckout';
-								break;
-							default:
-								route = '/';
-								break;
-						}
-
-						history.push(route);
-					}}
-				>
-					<BottomNavigationAction label='Select Pizzas' />
-					<BottomNavigationAction label='Customer Info' />
-					<BottomNavigationAction label='Checkout' />
-				</BottomNavigation>
-			</Paper>
-		</footer>
-	);
-}

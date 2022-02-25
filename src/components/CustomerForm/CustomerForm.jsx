@@ -43,19 +43,14 @@ function CustomerForm() {
 				type,
 			},
 		});
-
-		dispatch({
-			type: 'SET_LINK',
-			payload: 2,
-		});
 		history.push('/CustomerCheckout');
 	};
 
 	return (
 		<>
 			<Router>
+				<h1>Add Info</h1>
 				<section>
-					<h2>Add Info</h2>
 					<form onSubmit={handleSubmit} className='add-info-form'>
 						<TextField
 							style={{

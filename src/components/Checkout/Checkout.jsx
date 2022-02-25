@@ -33,11 +33,6 @@ function Checkout() {
 			.then((response) => {
 				console.log('in handleCheckoutClick.then', currentOrder);
 				// How do I LINK to home page?
-				dispatch({
-					type: 'SET_LINK',
-					payload: 0,
-				});
-
 				history.push('/');
 			})
 			.catch((err) => {
@@ -48,7 +43,7 @@ function Checkout() {
 	// ===== RETURN ======================================= //
 	return (
 		<>
-			<h3>Step 3: Checkout</h3>
+			<h1>Checkout</h1>
 
 			{/* <ul>
 				<li>{currentOrder.customer_name}</li>

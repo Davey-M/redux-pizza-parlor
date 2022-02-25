@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function PizzaCard({
 	pizza,
@@ -12,7 +12,10 @@ function PizzaCard({
 	const addPizza = () => {
 		setOrder(!order);
 
-		setPizzaState([...pizzaState, { id: pizza.id, quantity: 1, price: pizza.price}]);
+		setPizzaState([
+			...pizzaState,
+			{ id: pizza.id, quantity: 1, price: pizza.price },
+		]);
 
 		setPizzaPrice(pizzaPrice + Number(pizza.price));
 	};

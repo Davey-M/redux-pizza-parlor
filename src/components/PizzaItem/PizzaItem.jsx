@@ -47,11 +47,6 @@ function PizzaItem() {
 				total: pizzaPrice,
 			},
 		});
-
-		dispatch({
-			type: 'SET_LINK',
-			payload: 1,
-		});
 	};
 
 	console.log({ allPizzasReducer });
