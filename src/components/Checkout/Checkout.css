@@ -1,0 +1,26 @@
+table {
+    min-width: 600px;
+    margin: auto;
+}
+
+table, td, th {
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+td, th {
+    padding: 10px;
+}
+
+th {
+    background-color: rgb(185, 185, 185);
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(224, 224, 224);
+}
+/* 
+ul {
+    display: flex;
+    justify-content: left;
+} */

@@ -6,6 +6,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import PizzaItem from '../PizzaItem/PizzaItem';
 import CustomerForm from '../CustomerForm/CustomerForm';
 import AdminView from '../AdminView/AdminView';
+import Checkout from '../Checkout/Checkout';
 
 function App() {
 	return (
@@ -23,7 +24,7 @@ function App() {
 					<CustomerForm />
 				</Route>
 				<Route path='/CustomerCheckout' exact>
-					// customer checkout component
+					<Checkout />
 				</Route>
 				<Route path='/admin' exact>
 					<AdminView />

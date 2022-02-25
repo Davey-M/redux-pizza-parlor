@@ -12,7 +12,7 @@ function PizzaCard({
 	const addPizza = () => {
 		setOrder(!order);
 
-		setPizzaState([...pizzaState, { id: pizza.id, quantity: 1 }]);
+		setPizzaState([...pizzaState, { id: pizza.id, quantity: 1, price: pizza.price}]);
 
 		setPizzaPrice(pizzaPrice + Number(pizza.price));
 	};
