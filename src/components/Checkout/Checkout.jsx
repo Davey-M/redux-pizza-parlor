@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import icon from './nav3.svg';
 
 import {
 	HashRouter as Router,

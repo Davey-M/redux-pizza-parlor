@@ -51,7 +51,17 @@ function CustomerForm() {
 			<Router>
 				<h1>Add Info</h1>
 				<section>
-					<form onSubmit={handleSubmit} className='add-info-form'>
+					<form
+						onSubmit={handleSubmit}
+						className='add-info-form'
+						style={{
+							backgroundColor: 'white',
+							width: '60%',
+							padding: '1rem',
+							borderRadius: '4px',
+							margin: 'auto',
+						}}
+					>
 						<TextField
 							style={{
 								minWidth: '40%',
