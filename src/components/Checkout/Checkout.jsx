@@ -11,6 +11,7 @@ import {
 	TableBody,
 	TableCell,
 	Paper,
+	Button,
 } from '@mui/material';
 
 function Checkout() {
@@ -36,15 +37,31 @@ function Checkout() {
 		<>
 			<h3>Step 3: Checkout</h3>
 
-			<ul>
+			{/* <ul>
 				<li>{currentOrder.customer_name}</li>
 				<li>{currentOrder.customer_address}</li>
 				<li>
 					{currentOrder.city}, {currentOrder.zip}
 				</li>
-			</ul>
+			</ul> */}
 
-			<div>For: {currentOrder.type}</div>
+			<Paper
+				style={{
+					maxWidth: 'max-content',
+					padding: '1rem',
+					margin: '1rem 5%',
+					textAlign: 'left',
+				}}
+			>
+				<div>{currentOrder.customer_name}</div>
+				<div>{currentOrder.customer_address}</div>
+				<div>
+					{currentOrder.city}, {currentOrder.zip}
+				</div>
+				<div>Type: {currentOrder.type}</div>
+			</Paper>
+
+			{/* <div>For: {currentOrder.type}</div> */}
 
 			<div
 				style={{
@@ -87,7 +104,9 @@ function Checkout() {
 			{/* Handle Checkout & Link to back to Select Pizzas */}
 
 			<Link to='/'>
-				<button onClick={handleCheckoutClick}> Checkout</button>
+				<Button onClick={handleCheckoutClick} variant='contained'>
+					Checkout
+				</Button>
 			</Link>
 		</>
 	);
