@@ -1,0 +1,16 @@
+#name {
+    color: rgb(255, 187, 0);
+    font-size: 35px;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+}
+
+#price {
+    color: green;
+    text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
+    background-color: rgb(255, 249, 249);
+    border-radius: 5px;
+}
+
+.picture {
+    border-radius: 30px;
+}
