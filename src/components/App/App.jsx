@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 // import CustomerForm from '../CustomerForm/CustomerForm';
 
 import PizzaItem from '../PizzaItem/PizzaItem';
@@ -11,24 +11,33 @@ import Checkout from '../Checkout/Checkout';
 function App() {
 	return (
 		<Router>
-			<div className='App'>
+			<div
+				className='App'
+				style={{
+					display: 'grid',
+					gridTemplateRows: 'max-content 1fr',
+					height: '100vh',
+				}}
+			>
 				<header className='App-header'>
 					<h1 className='App-title'>Rhianna's UmPizzalla's</h1>
 				</header>
 				{/* <img src='images/pizza_photo.png' />
 				<p>Pizza is great.</p> */}
-				<Route path='/' exact>
-					<PizzaItem />
-				</Route>
-				<Route path='/CustomerForm' exact>
-					<CustomerForm />
-				</Route>
-				<Route path='/CustomerCheckout' exact>
-					<Checkout />
-				</Route>
-				<Route path='/admin' exact>
-					<AdminView />
-				</Route>
+				<main>
+					<Route path='/' exact>
+						<PizzaItem />
+					</Route>
+					<Route path='/CustomerForm' exact>
+						<CustomerForm />
+					</Route>
+					<Route path='/CustomerCheckout' exact>
+						<Checkout />
+					</Route>
+					<Route path='/admin' exact>
+						<AdminView />
+					</Route>
+				</main>
 			</div>
 		</Router>
 	);

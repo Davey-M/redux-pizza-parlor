@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter as Router, Link } from 'react-router-dom';
 import PizzaCard from '../PizzaCard/PizzaCard';
-import Button from '@material-ui/core/Button'
-import "./PizzaItem.css";
-
+import { Button } from '@mui/material';
+import './PizzaItem.css';
 
 function PizzaItem() {
 	const allPizzasReducer = useSelector((store) => store.allPizzasReducer);
@@ -55,8 +54,8 @@ function PizzaItem() {
 	console.log({ pizzaState });
 	return (
 		<Router>
-			<div id="name-header">
-			<h1>Pizzallas</h1>
+			<div id='name-header'>
+				<h1>Pizzallas</h1>
 			</div>
 			{allPizzasReducer.map((pizza, i) => {
 				return (
@@ -70,18 +69,13 @@ function PizzaItem() {
 					/>
 				);
 			})}
-			<div id ="Next">
-			<Link to='/CustomerForm'>
-				<br></br>
-				<Button
-                onClick={setPizzas}
-                variant="contained"
-                color="primary"
-                size="large"
-                >
-                Next
-            </Button>
-			</Link>
+			<div id='Next'>
+				<Link to='/CustomerForm'>
+					<br></br>
+					<Button onClick={setPizzas} variant='contained'>
+						Next
+					</Button>
+				</Link>
 			</div>
 		</Router>
 	);

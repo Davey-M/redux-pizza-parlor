@@ -1,19 +1,27 @@
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-header {
-  background-color: rgba(247, 144, 9, 0.5);
-  height: 70px;
-  padding: 20px;
-  color: white;
-  margin-bottom: 20px;
-  text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
-  text-transform: uppercase;
-  letter-spacing: 10px;
-
+	background-color: rgba(247, 144, 9, 0.5);
+	height: 70px;
+	padding: 20px;
+	color: white;
+	margin-bottom: 20px;
+	/* text-shadow: 2px 3px 5px rgba(0, 0, 0, 0.5); */
+	text-transform: uppercase;
+	letter-spacing: 10px;
 }
 
 .App-title {
-  font-size: 2em;
+	font-size: 2em;
+}
+
+.break {
+	height: 1rem;
+}
+
+.widthBreak {
+	width: 1rem;
+	display: inline-block;
 }

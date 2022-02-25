@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { Link, HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, useHistory } from 'react-router-dom';
+
+import { Button, TextField, Paper } from '@mui/material';
 
 function CustomerForm() {
+	const history = useHistory();
+
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
 	const [address, setAddress] = useState('');
@@ -40,65 +43,103 @@ function CustomerForm() {
 				type,
 			},
 		});
+		history.push('/CustomerCheckout');
 	};
 
 	return (
 		<>
 			<Router>
+				<h1>Add Info</h1>
 				<section>
-					<h2>Add Info</h2>
-					<form onSubmit={handleSubmit} className='add-info-form'>
-						<input
-							required
-							placeholder='Name'
-							value={name}
-							onChange={(event) => setName(event.target.value)}
-						/>
-
-						<input
-							required
-							placeholder='Address'
-							value={address}
-							onChange={(event) => setAddress(event.target.value)}
-						/>
-						<input
-							required
-							placeholder='City'
-							value={city}
-							onChange={(event) => setCity(event.target.value)}
-						/>
-						<input
-							required
-							placeholder='Zip'
-							value={zip}
-							onChange={(event) => setZip(event.target.value)}
-						/>
-						<label>
-							<input
-								type='radio'
-								value='Pickup'
-								onChange={handleRadio}
-								checked={type === 'Pickup'}
+					<Paper>
+						<form
+							onSubmit={handleSubmit}
+							className='add-info-form'
+							style={{
+								backgroundColor: 'white',
+								width: '60%',
+								padding: '1rem',
+								borderRadius: '4px',
+								margin: 'auto',
+							}}
+						>
+							<TextField
+								style={{
+									minWidth: '40%',
+								}}
+								required
+								label='Name'
+								value={name}
+								onChange={(event) => setName(event.target.value)}
 							/>
-							Pickup
-						</label>
-						<label>
-							<input
-								type='radio'
-								value='Delivery'
-								onChange={handleRadio}
-								checked={type === 'Delivery'}
+
+							<div className='break'></div>
+
+							<TextField
+								style={{
+									minWidth: '40%',
+								}}
+								required
+								label='Address'
+								value={address}
+								onChange={(event) => setAddress(event.target.value)}
 							/>
-							Delivery
-						</label>
-						{/* <Route path="/checkout" exact> */}
 
-						<button type='submit'>Submit Info</button>
+							<div className='break'></div>
 
-						<Link to='/CustomerCheckout'>
-							<button> Next</button>
-						</Link>
-					</form>
+							<TextField
+								style={{
+									minWidth: 'calc(20% - .5rem)',
+								}}
+								required
+								label='City'
+								value={city}
+								onChange={(event) => setCity(event.target.value)}
+							/>
+
+							<div className='widthBreak'></div>
+
+							<TextField
+								style={{
+									minWidth: 'calc(20% - .5rem)',
+								}}
+								required
+								label='Zip'
+								value={zip}
+								onChange={(event) => setZip(event.target.value)}
+							/>
+
+							<div className='break'></div>
+
+							<label>
+								<input
+									type='radio'
+									value='Pickup'
+									onChange={handleRadio}
+									checked={type === 'Pickup'}
+								/>
+								Pickup
+							</label>
+							<label>
+								<input
+									type='radio'
+									value='Delivery'
+									onChange={handleRadio}
+									checked={type === 'Delivery'}
+								/>
+								Delivery
+							</label>
+							{/* <Route path="/checkout" exact> */}
+
+							{/* <button type='submit'>Submit Info</button> */}
+
+							<div className='break'></div>
+
+							<Button variant='contained' type='submit'>
+								Next
+							</Button>
+						</form>
+					</Paper>
 				</section>
 			</Router>
 		</>
