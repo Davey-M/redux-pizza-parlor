@@ -45,6 +45,15 @@ const currentOrder = (state = {
     return state;
 }
 
+const linkState = (state = 0, action) => {
+
+    if (action.type === 'SET_LINK') {
+        return action.payload;
+    }
+
+    return state;
+}
+
 // Pizza reducer for GET from App.jsx
 const allPizzasReducer = (state = [], action) => {
     if (action.type === 'GET_PIZZAS') {
@@ -56,7 +65,8 @@ const allPizzasReducer = (state = [], action) => {
 const storeData = createStore(
     combineReducers({
         currentOrder,
-        allPizzasReducer
+        allPizzasReducer,
+        linkState
     }),
     applyMiddleware(logger)
 )

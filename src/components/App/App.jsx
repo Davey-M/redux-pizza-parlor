@@ -13,8 +13,7 @@ import PizzaItem from '../PizzaItem/PizzaItem';
 import CustomerForm from '../CustomerForm/CustomerForm';
 import AdminView from '../AdminView/AdminView';
 import Checkout from '../Checkout/Checkout';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
 	return (
@@ -60,28 +59,10 @@ export default App;
 
 function Footer() {
 	const history = useHistory();
-	const [selectedLabel, setLabel] = useState(0);
+	const dispatch = useDispatch();
+	// const [selectedLabel, setLabel] = useState(0);
 
-	useEffect(() => {
-		let link;
-
-		switch (history[history.length - 1]) {
-			case '/':
-				link = 0;
-				break;
-			case '/CustomerForm':
-				link = 1;
-				break;
-			case '/CustomerCheckout':
-				link = 2;
-				break;
-			default:
-				link = 0;
-				break;
-		}
-
-		setLabel(link);
-	}, [history]);
+	const selectedLabel = useSelector((store) => store.linkState);
 
 	return (
 		<footer
@@ -95,7 +76,12 @@ function Footer() {
 					showLabels
 					value={selectedLabel}
 					onChange={(event, newValue) => {
-						setLabel(newValue);
+						// setLabel(newValue);
+
+						dispatch({
+							type: 'SET_LINK',
+							payload: newValue,
+						});
 
 						let route;
 						switch (newValue) {

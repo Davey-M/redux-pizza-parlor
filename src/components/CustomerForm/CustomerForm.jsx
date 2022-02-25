@@ -44,6 +44,10 @@ function CustomerForm() {
 			},
 		});
 
+		dispatch({
+			type: 'SET_LINK',
+			payload: 2,
+		});
 		history.push('/CustomerCheckout');
 	};
 

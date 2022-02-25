@@ -1,6 +1,11 @@
 import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+	HashRouter as Router,
+	Route,
+	Link,
+	useHistory,
+} from 'react-router-dom';
 // import './Checkout.css';
 
 import {
@@ -17,6 +22,8 @@ import {
 function Checkout() {
 	const currentOrder = useSelector((store) => store.currentOrder);
 	const allPizzasReducer = useSelector((store) => store.allPizzasReducer);
+	const history = useHistory();
+	const dispatch = useDispatch();
 
 	// ===== POST ======================================== //
 	const handleCheckoutClick = () => {
@@ -26,6 +33,12 @@ function Checkout() {
 			.then((response) => {
 				console.log('in handleCheckoutClick.then', currentOrder);
 				// How do I LINK to home page?
+				dispatch({
+					type: 'SET_LINK',
+					payload: 0,
+				});
+
+				history.push('/');
 			})
 			.catch((err) => {
 				console.log('in handleCheckoutClick.catch', err);
@@ -103,11 +116,9 @@ function Checkout() {
 
 			{/* Handle Checkout & Link to back to Select Pizzas */}
 
-			<Link to='/'>
-				<Button onClick={handleCheckoutClick} variant='contained'>
-					Checkout
-				</Button>
-			</Link>
+			<Button onClick={handleCheckoutClick} variant='contained'>
+				Checkout
+			</Button>
 		</>
 	);
 }
