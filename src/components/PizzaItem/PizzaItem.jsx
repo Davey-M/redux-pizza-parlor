@@ -2,8 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { HashRouter as Router, Link } from 'react-router-dom';
-
 import PizzaCard from '../PizzaCard/PizzaCard';
+import Button from '@material-ui/core/Button'
+import "./PizzaItem.css";
+
 
 function PizzaItem() {
 	const allPizzasReducer = useSelector((store) => store.allPizzasReducer);
@@ -53,6 +55,9 @@ function PizzaItem() {
 	console.log({ pizzaState });
 	return (
 		<Router>
+			<div id="name-header">
+			<h1>Pizzallas</h1>
+			</div>
 			{allPizzasReducer.map((pizza, i) => {
 				return (
 					<PizzaCard
@@ -65,10 +70,19 @@ function PizzaItem() {
 					/>
 				);
 			})}
-
+			<div id ="Next">
 			<Link to='/CustomerForm'>
-				<button onClick={setPizzas}>Next</button>
+				<br></br>
+				<Button
+                onClick={setPizzas}
+                variant="contained"
+                color="primary"
+                size="large"
+                >
+                Next
+            </Button>
 			</Link>
+			</div>
 		</Router>
 	);
 } // end of PizzaItem
