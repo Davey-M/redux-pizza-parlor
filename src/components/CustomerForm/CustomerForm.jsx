@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { Link, Router } from 'react-router-dom';
+import { Link, HashRouter as Router } from 'react-router-dom';
 
 function CustomerForm() {
 	const dispatch = useDispatch();
