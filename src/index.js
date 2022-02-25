@@ -22,7 +22,7 @@ const currentOrder = (state = {
         const { customer_name, street_address, city, zip, type } = action.payload;
 
         return {
-            ...currentOrder,
+            ...state,
             customer_name: customer_name,
             street_address: street_address,
             city: city,
@@ -36,7 +36,7 @@ const currentOrder = (state = {
         const { total, pizzas } = action.payload;
 
         return {
-            ...currentOrder,
+            ...state,
             pizzas: pizzas,
             total: Number(total),
         }
