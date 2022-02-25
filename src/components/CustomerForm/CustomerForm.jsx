@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { Link, HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router, useHistory } from 'react-router-dom';
 
 import { Button, TextField } from '@mui/material';
 
 function CustomerForm() {
+	const history = useHistory();
+
 	const dispatch = useDispatch();
 	const [name, setName] = useState('');
 	const [address, setAddress] = useState('');
@@ -42,19 +43,8 @@ function CustomerForm() {
 				type,
 			},
 		});
-	};
 
-	const handleButtonClick = () => {
-		dispatch({
-			type: 'SET_CUSTOMER_DATA',
-			payload: {
-				customer_name: name,
-				street_address: address,
-				city,
-				zip,
-				type,
-			},
-		});
+		history.push('/CustomerCheckout');
 	};
 
 	return (
@@ -135,11 +125,9 @@ function CustomerForm() {
 
 						<div className='break'></div>
 
-						<Link to='/CustomerCheckout'>
-							<Button variant='contained' type='submit'>
-								Next
-							</Button>
-						</Link>
+						<Button variant='contained' type='submit'>
+							Next
+						</Button>
 					</form>
 				</section>
 			</Router>
