@@ -6,22 +6,18 @@ import './Checkout.css';
 function Checkout() {
 
     const currentOrder = useSelector(store => store.currentOrder);
+    const allPizzasReducer = useSelector(store => store.allPizzasReducer);
 
     // ===== POST ======================================== //
     const handleCheckoutClick = () => {
         console.log('in handleCheckoutClick');
         axios.post('api/order', currentOrder)
-        .then((response) => {
-            console.log('in handleCheckoutClick.then', currentOrder);
-            // How do I LINK to home page?
-        }).catch((err) => {
-            console.log('in handleCheckoutClick.catch', err);
-        })
-    }
-
-    // ===== HELPER FUNCTIONS ============================ //
-    const pizzaPriceTotal = (cost, qty) => {
-        return cost * qty
+            .then((response) => {
+                console.log('in handleCheckoutClick.then', currentOrder);
+                // How do I LINK to home page?
+            }).catch((err) => {
+                console.log('in handleCheckoutClick.catch', err);
+            })
     }
 
 
@@ -49,19 +45,21 @@ function Checkout() {
                 <tbody>
                     {currentOrder.pizzas.map((pizza, i) => {
                         return <tr key={i}>
-                            {/* CIRCLE BACK WITH VINCE */}
-                            <td>{/*pizza.quantity*/}</td> 
-                            <td>{/*pizza.cost*/}</td>
-                            <td>{pizzaPriceTotal(pizza.price * pizza.quantity)}</td> 
+                            <td>{allPizzasReducer.filter(item => item.id === pizza.id)[0].name}</td>
+                            <td>{pizza.quantity}</td>
+                            <td>{pizza.price}</td>
                         </tr>
                     })}
                 </tbody>
             </table>
 
             <h3>Total: {currentOrder.total}</h3>
-            
+
             {/* Handle Checkout & Link to back to Select Pizzas */}
-            <button onClick={handleCheckoutClick}>Checkout</button>
+
+            <Link to='/'>
+                <button onClick={handleCheckoutClick}> Checkout</button>
+            </Link>
         </>
     )
 }
